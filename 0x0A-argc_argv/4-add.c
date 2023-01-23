@@ -1,31 +1,38 @@
 #include <stdio.h>
-/**
- * main - program that multiplies two numbers.
- * @argc: argc parameter
- * @argv: an array of a command listed
- * Return: 0 for succcess
- */
-int main(int argc, char *argv[])
-{
-	int result = 0, num, i, j, k;
+#include <stdlib.h>
 
-	if (argc == 1)
-		printf("0\n");
-		
-	for (i = 0; i < argc; i++)
+/**
+ * main - adds positive numbers.
+ * @argc: argument count
+ * @argv: arguments
+ *
+ * Return: 0
+ */
+int main(int argc, char **argv)
+{
+	int i, n, sum = 0;
+	char *flag;
+
+	if (argc < 2)
 	{
-		for (j = 0; argv[i][j] != '\0'; j++)
+		printf("0\n");
+		return (0);
+	}
+
+	for (i = 1; argv[i]; i++)
+	{
+		n = strtol(argv[i], &flag, 10);
+		if (*flag)
 		{
-			printf("%s\n", "Error");
+			printf("Error\n");
 			return (1);
 		}
+		else
+		{
+			sum += n;
+		}
+	}
+	printf("%d\n", sum);
 
-	}
-	for (k = 0; k < argc; k++)
-	{
-		num = atoi(argv[k]);
-		result += num;
-	}
-	printf("%d\n", result);
 	return (0);
 }
